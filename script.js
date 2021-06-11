@@ -6,13 +6,14 @@ async function gdToMd(){
         document.getElementById('drive-link').value = driveLink
         start = driveLink.indexOf('/d/') + 3
         end = driveLink.indexOf('/view')
-        if (start==-1 || end==-1) {
-            alert('Link not valid')
-            return 
+        if (start!=-1 && end!=-1) {
+            id = driveLink.slice(start,end)
+            mdLink = '[file](https://drive.google.com/uc?export=view&id=' + id + ')'
+            document.getElementById('drive-link').value = mdLink
         }
-        id = driveLink.slice(start,end)
-        mdLink = '[file](https://drive.google.com/uc?export=view&id=' + id + ')'
-        document.getElementById('drive-link').value = mdLink
+        else{
+            alert('Link not valid')
+        }
     }
 }
 
